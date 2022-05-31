@@ -32,7 +32,7 @@ function Contact() {
         </Fade>
       </div>
       <div className="container relative -top-24 lg:px-0 px-5">
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
+        <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-3">
           <Fade left>
             <Offices image={"/contact1.jpg"} address={"Canary Wharf, London"} />
           </Fade>
@@ -53,8 +53,8 @@ function Contact() {
           width="100%"
           height="500"
           loading="lazy"
-          gestureHandling="greedy "
-          referrerpolicy="no-referrer-when-downgrade"
+          gesturehandling="greedy"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
         {/* <MapGoogle /> */}
       </div>

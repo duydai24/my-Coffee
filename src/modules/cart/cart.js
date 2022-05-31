@@ -24,14 +24,14 @@ function Cart({ onClickOnCart, classNameOnCart }) {
     <div className="flex w-full">
       <div
         className={
-          "w-[75%] h-screen fixed top-0 left-0 -translate-x-full transition-all bg-slate-200 opacity-60 z-10 lg:block hidden " +
+          "lg:w-[75%] md:w-[25%] h-screen fixed top-0 left-0 -translate-x-full transition-all bg-slate-200 opacity-60 z-10 lg:block hidden md:block " +
           classNameOnCart
         }
         onClick={onClickOnCart}
       />
       <div
         className={
-          "lg:w-[25%] w-screen h-screen z-30 fixed top-0 right-0 translate-x-full transition-all bg-[#1d1f2e] z-10 " +
+          "lg:w-[25%] md:w-[75%] w-screen h-screen z-30 fixed top-0 right-0 translate-x-full transition-all bg-[#1d1f2e] " +
           classNameOnCart
         }
       >

@@ -46,7 +46,7 @@ function About() {
         <div className="">
           <Fade bottom>
             <Title text={"INTRODUCTIONS"} />
-            <div className="grid lg:grid-cols-3 grid-cols-1 gap-2">
+            <div className="lg:grid grid lg:grid-cols-3 grid-cols-1 gap-2 md:flex md:flex-row md:justify-center md:flex-wrap">
               <AuthorsItem
                 image={"/author1.jpg"}
                 name={"Fred Gleason"}
@@ -102,9 +102,14 @@ function About() {
 function IntroductionItem({ image }) {
   return (
     <div className="flex lg:flex-row flex-col items-center mb-24">
-      <img src={image} width={460} height={380} />
+      <img
+        className="w-full md:max-h-[380px]"
+        src={image}
+        width={460}
+        height={380}
+      />
       <div className="lg:w-1/2 w-full lg:ml-10 text-center lg:text-left">
-        <p className="text-2xl font-normal leading-10 mb-4 opacity-80">
+        <p className="text-2xl font-normal leading-10 my-4 opacity-80">
           Overlaid the jeepers uselessly much excluding everyday life.
         </p>
         <div className="w-8 h-[2px] bg-[#ececed] my-5" />
@@ -123,7 +128,7 @@ function IntroductionItem2({ image }) {
   return (
     <div className="flex lg:flex-row flex-col items-center mb-24">
       <div className="lg:w-1/2 w-full lg:mr-10 text-center lg:text-left">
-        <p className="text-2xl font-normal leading-10 mb-4 opacity-80">
+        <p className="text-2xl font-normal leading-10 my-4 opacity-80">
           Overlaid the jeepers uselessly much excluding everyday life.
         </p>
         <div className="w-8 h-[2px] bg-[#ececed] my-5" />
@@ -135,13 +140,18 @@ function IntroductionItem2({ image }) {
           for the far World of Grammar.
         </p>
       </div>
-      <img src={image} width={460} height={380} />
+      <img
+        className="w-full md:max-h-[380px] md:mt-10"
+        src={image}
+        width={460}
+        height={380}
+      />
     </div>
   );
 }
 function AuthorsItem({ image, name, text }) {
   return (
-    <div className="lg:pb-24 pb-5">
+    <div className="lg:pb-24 md:w-2/5 lg:w-auto w-auto pb-5 md:px-[2%]">
       <img className="w-full" src={image} width={300} height={380} />
       <p className="text-xl font-normal leading-10 my-2 opacity-80 text-center">
         {name}

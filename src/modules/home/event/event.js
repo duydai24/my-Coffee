@@ -9,22 +9,22 @@ function Event() {
       <Fade bottom>
         <Title text={"BUY 2 MUGS AND GET A COFFEE MAGAZINE FREE"} />
         <div className="flex lg:flex-row flex-col">
-          <div className="flex lg:flex-row flex-col items-center justify-between lg:w-1/2 w-full">
+          <div className="flex lg:flex-row md:flex-row flex-col items-center justify-between lg:w-1/2 md:w-2/3 w-full mx-auto">
             <img
-              className="lg:w-3/5 w-full h-full lg:mr-5 "
+              className="lg:w-3/5 md:w-3/5 w-full h-full lg:mr-5 md:mr-10"
               src="event1.jpg"
               height={280}
               width={280}
             />
-            <div className="lg:w-2/5 w-full flex lg:block">
+            <div className="lg:w-2/5 md:w-2/5 w-full flex lg:block md:block">
               <img
-                className="lg:mb-5 w-1/2 lg:w-full"
+                className="lg:mb-5 md:mb-8 w-1/2 lg:w-full md:w-full"
                 src="event2.jpg"
                 height={130}
                 width={160}
               />
               <img
-                className="w-1/2 lg:w-full"
+                className="w-1/2 lg:w-full md:w-full"
                 src="event3.jpg"
                 height={130}
                 width={160}

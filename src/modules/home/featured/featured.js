@@ -26,7 +26,7 @@ function Featured() {
 
 function FeaturedItem({ image, name, price }) {
   return (
-    <div className="lg:w-1/2 w-full">
+    <div className="w-full">
       <div className="relative w-full imgProduct">
         <img
           className="lg:h-[540px] md:h-[450px] h-auto w-full"
@@ -34,7 +34,7 @@ function FeaturedItem({ image, name, price }) {
           width={460}
           height={540}
         />
-        <button className="bg-white uppercase text-blacks text-xs absolute transition-all left-1/2 -translate-x-1/2 bottom-3 w-11/12 py-3 opacity-0 duration-200 invisible btnProducts">
+        <button className="bg-white uppercase text-blacks text-xs absolute transition-all left-1/2 -translate-x-1/2 bottom-3 w-11/12 py-4 opacity-0 duration-200 invisible btnProducts">
           Explore MUGS
         </button>
       </div>

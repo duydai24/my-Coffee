@@ -51,7 +51,7 @@ function Blog() {
         </div>
         <div className="flex lg:flex-row flex-col py-14">
           <div className="lg:w-2/3 w-full lg:mr-10 mr-0">
-            <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left text-center">
+            <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left md:text-left text-center">
               Latest Posts
             </p>
             <div className="py-10">
@@ -67,13 +67,13 @@ function Blog() {
             </div>
           </div>
           <div className="lg:w-1/3 w-full">
-            <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left text-center">
+            <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left md:text-left text-center">
               About Us
             </p>
-            <div className="py-10 text-center lg:text-left">
+            <div className="py-10 text-center lg:text-left md:text-left">
               <div>
                 <img
-                  className="mx-auto lg:mx-0"
+                  className="mx-auto lg:mx-0 md:mx-0"
                   src="/logo.png"
                   height={24}
                   width={112}
@@ -100,7 +100,7 @@ function Blog() {
                 </div>
               </div>
               <div className="pb-10">
-                <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left text-center">
+                <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left md:text-left text-center">
                   Authors
                 </p>
                 <div className="mt-10">
@@ -156,8 +156,8 @@ function Story({ image, text, title, date }) {
 
 function LatestPostItem({ image, title, content, date }) {
   return (
-    <div className="flex lg:flex-row flex-col justify-center pb-10 lg:h-[210px] h-auto">
-      <div className="lg:w-2/5 w-full mr-10 relative imgProduct">
+    <div className="flex lg:flex-row md:flex-row flex-col justify-center pb-10 lg:h-[210px] h-auto">
+      <div className="lg:w-2/5 md:w-2/5 w-full mr-10 relative imgProduct">
         <img className="w-full h-full" src={image} width={260} height={210} />
         <Link href="/About">
           <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
@@ -165,8 +165,10 @@ function LatestPostItem({ image, title, content, date }) {
           </button>
         </Link>
       </div>
-      <div className="lg:w-3/5 w-full text-center lg:text-left">
-        <p className="font-medium text-blacks text-lg mt-5 lg:mt-0">{title}</p>
+      <div className="lg:w-3/5 md:w-3/5 w-full text-center lg:text-left md:text-left">
+        <p className="font-medium text-blacks text-lg mt-5 md:mt-0 lg:mt-0">
+          {title}
+        </p>
         <p className="opacity-60 text-blacks text-sm leading-7 py-5">
           {content}
         </p>

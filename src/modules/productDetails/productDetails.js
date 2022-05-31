@@ -64,11 +64,19 @@ function ProductDetails() {
   };
 
   return (
-    <div className="">
+    <div className="py-24 lg:py-0">
       {new_product.map((value, key) => (
-        <div key={key} className="container grid grid-cols-2 gap-16 py-24">
-          <img src={value.image} height={460} width={460} />
-          <div className="items-start flex flex-col justify-center">
+        <div
+          key={key}
+          className="container grid lg:grid-cols-2 grid-cols-1 gap-16 py-24 px-5 lg:px-0"
+        >
+          <img
+            className="w-full max-h-[460px]"
+            src={value.image}
+            height={460}
+            width={460}
+          />
+          <div className="lg:items-start flex flex-col items-center justify-center text-center lg:text-left">
             <p className="text-4xl">{value.name}</p>
             <p className="text-lg leading-7 text-[#1d1f2eb3] my-5">
               {value.desciption}
@@ -79,10 +87,10 @@ function ProductDetails() {
             <label className="text-xs leading-5 font-bold text-[#1d1f2e99] uppercase my-2">
               quantity
             </label>
-            <div className="flex">
+            <div className="flex lg:flex-row md:flex-row flex-col md:w-auto w-full justify-center">
               <input
                 pattern="[0-9]*"
-                className="border-0 border-blacks py-3 pl-5 pr-2 w-1/4 outline-none"
+                className="border-0 border-blacks py-3 pl-5 pr-2 lg:w-1/4 md:w-1/4 w-full outline-none lg:mb-0 md:mb-0 mb-3 text-center"
                 type="number"
                 min={1}
                 value={Number(quantity)}
@@ -98,13 +106,13 @@ function ProductDetails() {
                     value.quantity
                   )
                 }
-                className="ml-3 py-5 px-6 bg-blacks text-white font-bold text-xs text-center uppercase hover:opacity-95 hover:bg-[#2f3247]"
+                className="lg:ml-3 md:ml-3 py-5 px-6 bg-blacks text-white font-bold text-xs text-center uppercase hover:opacity-95 hover:bg-[#2f3247]"
               >
                 add to cart
               </button>
             </div>
           </div>
-          <div>
+          <div className="lg:text-left text-center">
             <label className="text-xs leading-5 font-bold text-[#1d1f2e99] uppercase my-2">
               DETAILS
             </label>
@@ -112,11 +120,11 @@ function ProductDetails() {
               {value.details}
             </p>
           </div>
-          <div>
+          <div className="lg:text-left text-center">
             <label className="text-xs leading-5 font-bold text-[#1d1f2e99] uppercase my-2">
               DIMENSIONS
             </label>
-            <ul className="list-disc text-black mt-5">
+            <ul className="lg:list-disc text-black mt-5 list-none">
               <li className="text-[#1d1f2eb3] leading-7 opacity-80">
                 Lenght (in):20.0
               </li>
@@ -134,10 +142,10 @@ function ProductDetails() {
         </div>
       ))}
 
-      <div className="w-full h-auto flex">
-        <div className="bg-[url('/bg-productsDetails.jpg')] bg-center bg-cover w-1/2" />
-        <div className="bg-blacks w-1/2 pl-20 py-16">
-          <div className="w-1/2">
+      <div className="w-full h-auto flex lg:flex-row flex-col">
+        <div className="bg-[url('/bg-productsDetails.jpg')] bg-center bg-cover lg:w-1/2 w-full min-h-[280px]" />
+        <div className="bg-blacks lg:w-1/2 w-full lg:pl-20 py-16 text-center lg:text-left">
+          <div className="lg:w-1/2 w-ful">
             <p className="text-white font-normal text-2xl leading-9">
               Handmade by{" "}
               <span className="text-white text-2xl leading-9 font-bold">
@@ -148,7 +156,7 @@ function ProductDetails() {
               The most versatile furniture system ever created. Designed to fit
               your life.
             </p>
-            <div className="flex mt-5">
+            <div className="flex lg:flex-row flex-col items-center mt-5">
               <span className="text-white text-2xl mr-5">
                 <IoDiamondOutline />
               </span>
@@ -160,7 +168,7 @@ function ProductDetails() {
                 </p>
               </div>
             </div>
-            <div className="flex mt-5">
+            <div className="flex lg:flex-row flex-col items-center mt-5">
               <span className="text-white text-2xl mr-5">
                 <MdLightbulbOutline />
               </span>
@@ -178,12 +186,17 @@ function ProductDetails() {
       <div className="pt-20">
         <Title text={"YOU MIGHT ALSO LIKE THESE"} />
       </div>
-      <div className="container grid grid-cols-3">
+      <div className="container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         {category_product.map((value, key) => (
           <div key={key} className="px-3 py-10">
             <div className="relative w-full imgProduct">
               <Link href={"/ProductDetails/" + value.id}>
-                <img className="" src={value.image} width={460} height={460} />
+                <img
+                  className="w-full"
+                  src={value.image}
+                  width={460}
+                  height={460}
+                />
               </Link>
               <Link href={"/ProductDetails/" + value.id}>
                 <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">

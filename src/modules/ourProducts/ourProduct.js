@@ -39,7 +39,7 @@ function OurProducts() {
           <p className="text-[#1d1f2eb3] text-center opacity-80">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <div className="flex lg:flex-row flex-col justify-between items-center lg:w-[80%] w-full mx-auto mt-10">
+          <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center lg:w-[80%] w-full mx-auto mt-10">
             <span className="w-8 h-[2px] bg-[#ececed] hidden lg:block"></span>
             {categoryId.map((value, key) => (
               <button
@@ -47,8 +47,8 @@ function OurProducts() {
                 onClick={() => handleCategory(value.id, key)}
                 className={
                   value.id === active
-                    ? "opacity-100 border-[#a25f4b66] bg-white border-0 py-3 px-8 w-full lg:w-auto text-[#a25f4b] text-sm mb-5 lg:mb-0"
-                    : "bg-white border-0 border-[#ececed] hover:border-[#a25f4b66] opacity-80 py-3 px-8 w-full lg:w-auto text-[#a25f4b] text-sm hover:opacity-100 mb-5 lg:mb-0"
+                    ? "opacity-100 border-[#a25f4b66] bg-white border-0 py-3 px-8 md:px-8 w-full lg:w-auto md:w-auto text-[#a25f4b] text-sm mb-5 lg:mb-0 md:mb-0"
+                    : "bg-white border-0 border-[#ececed] hover:border-[#a25f4b66] md:px-8 opacity-80 md:w-auto py-3 px-8 w-full lg:w-auto text-[#a25f4b] text-sm hover:opacity-100 mb-5 lg:mb-0 md:mb-0"
                 }
               >
                 {value.name}
