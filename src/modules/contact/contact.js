@@ -31,8 +31,8 @@ function Contact() {
           </div>
         </Fade>
       </div>
-      <div className="container relative -top-24">
-        <div className="grid grid-cols-2 gap-3">
+      <div className="container relative -top-24 lg:px-0 px-5">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
           <Fade left>
             <Offices image={"/contact1.jpg"} address={"Canary Wharf, London"} />
           </Fade>
@@ -61,7 +61,7 @@ function Contact() {
       <div className="container py-24">
         <Title text="DIRECTORY" />
         <Fade bottom>
-          <div className="grid grid-cols-3">
+          <div className="grid lg:grid-cols-3 grid-cols-1">
             <Directory
               title={"PRESS"}
               name={"Robb Kohler"}
@@ -113,7 +113,7 @@ function Contact() {
 
 function Directory({ name, title, phone, email }) {
   return (
-    <div className="text-center">
+    <div className="text-center mb-10 lg:mb-0">
       <p className="text-xs opacity-60 leading-4 font-bold tracking-[2px] uppercase">
         {title}
       </p>
@@ -147,9 +147,9 @@ function Offices({ image, address }) {
 
 function FormContact({}) {
   return (
-    <div className="border-0 border-[#d2d2d580] p-14 flex bg-white">
+    <div className="border-0 border-[#d2d2d580] p-14 flex lg:flex-row flex-col bg-white">
       <Fade bottom>
-        <div className="w-3/5 mr-14">
+        <div className="lg:w-3/5 w-full lg:mr-14 mb-14">
           <p className="font-bold text-xs opacity-60 uppercase">CONTACT FORM</p>
           <p className="text-lg opacity-90">
             Drop us your message and I'll get back to you as soon as possible.
@@ -180,11 +180,11 @@ function FormContact({}) {
               maxLength={5000}
             />
           </div>
-          <button className="bg-blacks py-5 px-7 text-white text-xs uppercase">
+          <button className="bg-blacks py-5 px-7 w-full lg:w-auto text-white text-xs uppercase">
             send message
           </button>
         </div>
-        <div className="w-2/5 border-l-0 border-[#d2d2d580] pl-14">
+        <div className="lg:w-2/5 w-full lg:border-l-0 border-t-0 border-[#d2d2d580] lg:pl-14 pt-14 text-center lg:text-left">
           <p className="font-bold text-xs opacity-60 uppercase">CONTACT FORM</p>
           <p className="text-lg opacity-90 mb-5">CoffeeStyle. Inc</p>
           <p className="text-xs opacity-60 mb-3">Pride Ave,</p>

@@ -6,11 +6,11 @@ import { Helmet } from "react-helmet";
 function Blog() {
   const { story } = useSelector((state) => state.storys);
   return (
-    <div className="relative">
+    <div className="relative py-24">
       <Helmet>
         <title>My Coffee - Blog</title>
       </Helmet>
-      <div className="bg-[#f6f6f6] flex items-stretch flex-col min-h-[530px] max-w-[1440px] mx-auto justify-center">
+      <div className="bg-[#f6f6f6] flex items-stretch flex-col min-h-[530px] max-w-[1440px] px-5 mx-auto justify-center">
         <div className="container bg-cover flex flex-col items-center text-center text-white">
           <p className="text-4xl text-blacks mb-8">
             Read coffee stories on our Blog
@@ -28,8 +28,8 @@ function Blog() {
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="flex justify-between mtStory">
+      <div className="container px-5">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 mtStory">
           <Story
             image={"/story2.jpg"}
             title={"How long does a cup of coffee keep you awake?"}
@@ -49,9 +49,9 @@ function Blog() {
             date={"OCTOBER 8, 2018"}
           />
         </div>
-        <div className="flex py-14">
-          <div className="w-2/3 mr-10">
-            <p className="text-2xl pb-5 border-b-0 border-gray-200">
+        <div className="flex lg:flex-row flex-col py-14">
+          <div className="lg:w-2/3 w-full lg:mr-10 mr-0">
+            <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left text-center">
               Latest Posts
             </p>
             <div className="py-10">
@@ -66,11 +66,18 @@ function Blog() {
               ))}
             </div>
           </div>
-          <div className="w-1/3">
-            <p className="text-2xl pb-5 border-b-0 border-gray-200">About Us</p>
-            <div className="py-10">
+          <div className="lg:w-1/3 w-full">
+            <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left text-center">
+              About Us
+            </p>
+            <div className="py-10 text-center lg:text-left">
               <div>
-                <img src="/logo.png" height={24} width={112} />
+                <img
+                  className="mx-auto lg:mx-0"
+                  src="/logo.png"
+                  height={24}
+                  width={112}
+                />
                 <p className="opacity-60 text-blacks text-sm py-5 leading-7">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse varius enim in eros elementum tristique.
@@ -93,7 +100,7 @@ function Blog() {
                 </div>
               </div>
               <div className="pb-10">
-                <p className="text-2xl pb-5 border-b-0 border-gray-200">
+                <p className="text-2xl pb-5 border-b-0 border-gray-200 lg:text-left text-center">
                   Authors
                 </p>
                 <div className="mt-10">
@@ -107,7 +114,7 @@ function Blog() {
         </div>
         <div className="pb-24">
           <div className="border-l-2 border-b-2 border-[#a25f4b33]">
-            <p className="text-[#a25f4b] text-lg leading-8 p-8 text-center">
+            <p className="text-[#a25f4b] text-lg font-bold lg:font-normal leading-8 p-8 text-center">
               "I wake up some mornings and sit and have my coffee and look out
               at my beautiful garden, and I go, ’Remember how good this is.
               Because you can lose it."
@@ -124,7 +131,7 @@ function Blog() {
 
 function Story({ image, text, title, date }) {
   return (
-    <div className="pb-10 w-[49%]">
+    <div className="pb-10 w-full">
       <div className="relative imgProduct">
         <img
           className="h-[300px] w-full"
@@ -138,7 +145,7 @@ function Story({ image, text, title, date }) {
           </button>
         </Link>
       </div>
-      <div className="pt-10">
+      <div className="pt-10 text-center lg:text-left">
         <p className="text-blacks text-lg">{title}</p>
         <p className="text-blacks opacity-60 text-sm py-5">{text}</p>
         <p className="text-blacks opacity-60 text-sm uppercase">{date}</p>
@@ -149,8 +156,8 @@ function Story({ image, text, title, date }) {
 
 function LatestPostItem({ image, title, content, date }) {
   return (
-    <div className="flex justify-center pb-10 h-[210px]">
-      <div className="w-2/5 mr-10 relative imgProduct">
+    <div className="flex lg:flex-row flex-col justify-center pb-10 lg:h-[210px] h-auto">
+      <div className="lg:w-2/5 w-full mr-10 relative imgProduct">
         <img className="w-full h-full" src={image} width={260} height={210} />
         <Link href="/About">
           <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
@@ -158,9 +165,8 @@ function LatestPostItem({ image, title, content, date }) {
           </button>
         </Link>
       </div>
-
-      <div className="w-3/5">
-        <p className="font-medium text-blacks text-lg">{title}</p>
+      <div className="lg:w-3/5 w-full text-center lg:text-left">
+        <p className="font-medium text-blacks text-lg mt-5 lg:mt-0">{title}</p>
         <p className="opacity-60 text-blacks text-sm leading-7 py-5">
           {content}
         </p>
@@ -174,7 +180,7 @@ function LatestPostItem({ image, title, content, date }) {
 
 function CategoryItem({ text }) {
   return (
-    <div className="bg-transparent hover:bg-[#a25f4b0a] transition-all cursor-pointer border-l-2 border-[#a25f4b33] hover:border-[#a25f4bcc] mb-2">
+    <div className="bg-transparent hover:bg-[#a25f4b0a] text-left transition-all cursor-pointer border-l-2 border-[#a25f4b33] hover:border-[#a25f4bcc] mb-2">
       <p className="text-blacks py-3 pl-5">{text}</p>
     </div>
   );
@@ -183,7 +189,7 @@ function CategoryItem({ text }) {
 function AuthorItem({ text, img }) {
   return (
     <div className="bg-transparent hover:bg-[#a25f4b0a] transition-all cursor-pointer border-l-2 border-[#a25f4b33] hover:border-[#a25f4bcc] mb-2">
-      <div className="py-2 pl-5 flex items-center">
+      <div className="py-2 pl-5 flex lg:items-center items-start">
         <img src={img} height={60} width={60} className="max-h-[60px]" />
         <p className="text-blacks ml-5">{text}</p>
       </div>

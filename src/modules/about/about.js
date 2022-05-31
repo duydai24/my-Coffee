@@ -5,7 +5,7 @@ import Fade from "react-reveal/Fade";
 
 function About() {
   return (
-    <div>
+    <div className="lg:px-0 px-5">
       <Helmet>
         <title>My Coffee - About</title>
       </Helmet>
@@ -46,7 +46,7 @@ function About() {
         <div className="">
           <Fade bottom>
             <Title text={"INTRODUCTIONS"} />
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-2">
               <AuthorsItem
                 image={"/author1.jpg"}
                 name={"Fred Gleason"}
@@ -101,9 +101,9 @@ function About() {
 
 function IntroductionItem({ image }) {
   return (
-    <div className="flex items-center mb-24">
+    <div className="flex lg:flex-row flex-col items-center mb-24">
       <img src={image} width={460} height={380} />
-      <div className="w-1/2 ml-10">
+      <div className="lg:w-1/2 w-full lg:ml-10 text-center lg:text-left">
         <p className="text-2xl font-normal leading-10 mb-4 opacity-80">
           Overlaid the jeepers uselessly much excluding everyday life.
         </p>
@@ -121,8 +121,8 @@ function IntroductionItem({ image }) {
 }
 function IntroductionItem2({ image }) {
   return (
-    <div className="flex items-center mb-24">
-      <div className="w-1/2 mr-10">
+    <div className="flex lg:flex-row flex-col items-center mb-24">
+      <div className="lg:w-1/2 w-full lg:mr-10 text-center lg:text-left">
         <p className="text-2xl font-normal leading-10 mb-4 opacity-80">
           Overlaid the jeepers uselessly much excluding everyday life.
         </p>
@@ -141,8 +141,8 @@ function IntroductionItem2({ image }) {
 }
 function AuthorsItem({ image, name, text }) {
   return (
-    <div className="pb-24">
-      <img src={image} width={300} height={380} />
+    <div className="lg:pb-24 pb-5">
+      <img className="w-full" src={image} width={300} height={380} />
       <p className="text-xl font-normal leading-10 my-2 opacity-80 text-center">
         {name}
       </p>

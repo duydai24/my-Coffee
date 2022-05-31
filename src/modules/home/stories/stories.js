@@ -8,7 +8,7 @@ function Stories() {
     <Fade bottom>
       <div className="container py-24 px-5">
         <Title text={"BEHIND THE MUGS, LIFESTYLE STORIES"} />
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           <Story
             image={"/story1.jpg"}
             title={
@@ -37,6 +37,18 @@ function Stories() {
             }
             date={"OCTOBER 8, 2018"}
           />
+          <div className="lg:hidden hidden md:block">
+            <Story
+              image={"/story1.jpg"}
+              title={
+                "Health Check: why do I get a headache when I haven’t had my coffee?"
+              }
+              text={
+                "It is a paradisematic country, in which roasted parts of sentences fly into your mouth."
+              }
+              date={"OCTOBER 9, 2018"}
+            />
+          </div>
         </div>
       </div>
     </Fade>

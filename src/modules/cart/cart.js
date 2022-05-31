@@ -31,7 +31,7 @@ function Cart({ onClickOnCart, classNameOnCart }) {
       />
       <div
         className={
-          "lg:w-[25%] w-screen h-screen fixed top-0 right-0 translate-x-full transition-all bg-[#1d1f2e] z-10 " +
+          "lg:w-[25%] w-screen h-screen z-30 fixed top-0 right-0 translate-x-full transition-all bg-[#1d1f2e] z-10 " +
           classNameOnCart
         }
       >

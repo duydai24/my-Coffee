@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import Link from "next/link";
 import { Helmet } from "react-helmet";
-import Products from "../home/products/products";
 import Fade from "react-reveal/Fade";
 
 function OurProducts() {
@@ -26,35 +25,36 @@ function OurProducts() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
-    <div className="container">
+    <div className="container pt-24 px-5 lg:px-0">
       <Fade bottom>
         <Helmet>
           <title>My Coffee - OurProducts</title>
         </Helmet>
         <div className="py-20">
           <p className="text-4xl text-blacks text-center pb-5">Our Products</p>
-          <p className="text-[#1d1f2eb3] text-center opacity-60">
+          <p className="text-[#1d1f2eb3] text-center opacity-80">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <div className="flex justify-between items-center w-[80%] mx-auto mt-10">
-            <span className="w-8 h-[2px] bg-[#ececed]"></span>
+          <div className="flex lg:flex-row flex-col justify-between items-center lg:w-[80%] w-full mx-auto mt-10">
+            <span className="w-8 h-[2px] bg-[#ececed] hidden lg:block"></span>
             {categoryId.map((value, key) => (
               <button
                 key={key}
                 onClick={() => handleCategory(value.id, key)}
                 className={
                   value.id === active
-                    ? "opacity-100 border-[#a25f4b66] bg-white border-0 py-3 px-8 text-[#a25f4b] text-sm"
-                    : "bg-white border-0 border-[#ececed] hover:border-[#a25f4b66] opacity-80 py-3 px-8 text-[#a25f4b] text-sm hover:opacity-100"
+                    ? "opacity-100 border-[#a25f4b66] bg-white border-0 py-3 px-8 w-full lg:w-auto text-[#a25f4b] text-sm mb-5 lg:mb-0"
+                    : "bg-white border-0 border-[#ececed] hover:border-[#a25f4b66] opacity-80 py-3 px-8 w-full lg:w-auto text-[#a25f4b] text-sm hover:opacity-100 mb-5 lg:mb-0"
                 }
               >
                 {value.name}
               </button>
             ))}
-            <span className="w-8 h-[2px] bg-[#ececed]"></span>
+            <span className="w-8 h-[2px] bg-[#ececed] hidden lg:block"></span>
           </div>
         </div>
         <div className="pb-20">
@@ -81,7 +81,7 @@ function OurProducts() {
             />
           </Slider>
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
           <Fade bottom>
             {product.map((value, key) => (
               <div key={key} className="px-3 py-10">
@@ -119,20 +119,22 @@ function OurProducts() {
 
 function SliderItem({ image, title, lable, text, btn }) {
   return (
-    <div className="flex items-center">
-      <div className="flex items-center justify-between w-1/2">
+    <div className="flex lg:flex-row flex-col items-center">
+      <div className="flex items-center justify-between lg:w-1/2 w-full">
         <img
-          className="w-full h-[380px] mr-5 "
+          className="w-full h-[380px] lg:mr-5"
           src={image}
           height={680}
           width={680}
         />
       </div>
-      <div className="flex flex-col items-start pl-16 w-1/2">
-        <p className="text-xs text-blacks opacity-60 uppercase">{lable}</p>
-        <p className="text-4xl text-blacks my-5">{title}</p>
+      <div className="flex flex-col lg:items-start text-center items-center lg:pl-16 lg:w-1/2 w-full">
+        <p className="text-xs text-blacks mt-5 lg:mt-0 uppercase">{lable}</p>
+        <p className="lg:text-4xl text-3xl text-black font-normal my-5">
+          {title}
+        </p>
         <p className="text-sm text-blacks opacity-60 mb-5">{text}</p>
-        <button className="bg-blacks py-4 px-8 text-xs  text-white uppercase hover:bg-[#2f3247] hover:opacity-95">
+        <button className="bg-blacks py-5 px-10 text-xs text-white uppercase hover:bg-[#2f3247] hover:opacity-95">
           {btn}
         </button>
       </div>
