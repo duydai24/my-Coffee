@@ -1,6 +1,6 @@
-import Link from "next/link";
 import React from "react";
 import Fade from "react-reveal/Fade";
+import Link from "next/link";
 
 function Banner() {
   return (
