@@ -13,8 +13,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500&display=swap"
             rel="stylesheet"
           />
-          <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
-          <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
         </Head>
 
         <body>
