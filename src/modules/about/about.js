@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "../../lib/title";
 import { Helmet } from "react-helmet";
+import Fade from "react-reveal/Fade";
 
 function About() {
   return (
@@ -36,27 +37,33 @@ function About() {
             decided to leave for the far World of Grammar.
           </p>
         </div>
-        <IntroductionItem image={"/about1.jpg"} />
-        <IntroductionItem2 image={"/about2.jpg"} />
+        <Fade left>
+          <IntroductionItem image={"/about1.jpg"} />
+        </Fade>
+        <Fade right>
+          <IntroductionItem2 image={"/about2.jpg"} />
+        </Fade>
         <div className="">
-          <Title text={"INTRODUCTIONS"} />
-          <div className="grid grid-cols-3 gap-2">
-            <AuthorsItem
-              image={"/author1.jpg"}
-              name={"Fred Gleason"}
-              text={"BRAND OWNER"}
-            />
-            <AuthorsItem
-              image={"/author2.jpg"}
-              name={"Isabel Hamill"}
-              text={"MUG DESIGNER"}
-            />
-            <AuthorsItem
-              image={"/author3.jpg"}
-              name={"Maurice Herman"}
-              text={"MUG DESIGNER"}
-            />
-          </div>
+          <Fade bottom>
+            <Title text={"INTRODUCTIONS"} />
+            <div className="grid grid-cols-3 gap-2">
+              <AuthorsItem
+                image={"/author1.jpg"}
+                name={"Fred Gleason"}
+                text={"BRAND OWNER"}
+              />
+              <AuthorsItem
+                image={"/author2.jpg"}
+                name={"Isabel Hamill"}
+                text={"MUG DESIGNER"}
+              />
+              <AuthorsItem
+                image={"/author3.jpg"}
+                name={"Maurice Herman"}
+                text={"MUG DESIGNER"}
+              />
+            </div>
+          </Fade>
         </div>
       </div>
       <div className="bg-[url('/bg-about2.jpg')] bg-fixed bg-cover bg-center w-full h-[340px]" />
@@ -148,9 +155,11 @@ function AuthorsItem({ image, name, text }) {
 function HistoryItem({ date, title, text }) {
   return (
     <div className="flex flex-col items-center text-center w-[60%] mx-auto pb-14">
-      <p className="text-xs opacity-60 font-bold uppercase">{date}</p>
-      <p className="text-lg opacity-80 py-5">{title}</p>
-      <p className="opacity-60 leading-7 pb-10">{text}</p>
+      <Fade bottom>
+        <p className="text-xs opacity-60 font-bold uppercase">{date}</p>
+        <p className="text-lg opacity-80 py-5">{title}</p>
+        <p className="opacity-60 leading-7 pb-10">{text}</p>
+      </Fade>
       <span className="w-200 h-[2px] bg-[#ececed]" />
       <span className="w-[2px] h-20 bg-[#ececed]" />
     </div>

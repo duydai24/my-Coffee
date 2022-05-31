@@ -24,7 +24,7 @@
         .lineHeader {
             visibility: visible;
             animation-name: example;
-            animation-duration: 2s;
+            animation-duration: 0.5s;
             animation-iteration-count: unset;
             @keyframes example {
                 from {
@@ -46,4 +46,13 @@
 }
 .onCart {
     transform: translateX(0);
+}
+.offMenu {
+    transition-property: transform;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out !important;
+    transition-delay: 0s;
+}
+.onMenu {
+    transform: translateX(0) translateY(0);
 }

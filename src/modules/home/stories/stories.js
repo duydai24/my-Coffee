@@ -1,42 +1,45 @@
 import Link from "next/link";
 import React from "react";
 import Title from "../../../lib/title";
+import Fade from "react-reveal/Fade";
 
 function Stories() {
   return (
-    <div className="container py-24">
-      <Title text={"BEHIND THE MUGS, LIFESTYLE STORIES"} />
-      <div className="grid grid-cols-3 gap-5">
-        <Story
-          image={"/story1.jpg"}
-          title={
-            "Health Check: why do I get a headache when I haven’t had my coffee?"
-          }
-          text={
-            "It is a paradisematic country, in which roasted parts of sentences fly into your mouth."
-          }
-          date={"OCTOBER 9, 2018"}
-        />
-        <Story
-          image={"/story2.jpg"}
-          title={"How long does a cup of coffee keep you awake?"}
-          text={
-            "It is a paradisematic country, in which roasted parts. Vel qui et ad voluptatem."
-          }
-          date={"OCTOBER 9, 2018"}
-        />
-        <Story
-          image={"/story3.jpg"}
-          title={
-            "Recent research suggests that heavy coffee drinkers may reap health benefits."
-          }
-          text={
-            "It is a paradisematic country, in which roasted parts of sentences fly into your mouth."
-          }
-          date={"OCTOBER 8, 2018"}
-        />
+    <Fade bottom>
+      <div className="container py-24 px-5">
+        <Title text={"BEHIND THE MUGS, LIFESTYLE STORIES"} />
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
+          <Story
+            image={"/story1.jpg"}
+            title={
+              "Health Check: why do I get a headache when I haven’t had my coffee?"
+            }
+            text={
+              "It is a paradisematic country, in which roasted parts of sentences fly into your mouth."
+            }
+            date={"OCTOBER 9, 2018"}
+          />
+          <Story
+            image={"/story2.jpg"}
+            title={"How long does a cup of coffee keep you awake?"}
+            text={
+              "It is a paradisematic country, in which roasted parts. Vel qui et ad voluptatem."
+            }
+            date={"OCTOBER 9, 2018"}
+          />
+          <Story
+            image={"/story3.jpg"}
+            title={
+              "Recent research suggests that heavy coffee drinkers may reap health benefits."
+            }
+            text={
+              "It is a paradisematic country, in which roasted parts of sentences fly into your mouth."
+            }
+            date={"OCTOBER 8, 2018"}
+          />
+        </div>
       </div>
-    </div>
+    </Fade>
   );
 }
 

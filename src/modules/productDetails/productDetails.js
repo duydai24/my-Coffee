@@ -28,7 +28,6 @@ function ProductDetails() {
 
   const addToCart = (id, name, image, price) => {
     const checkCart = cart.some((el) => el.id === id);
-    console.log(checkCart);
     if (!checkCart) {
       let new_cart = {
         id: id,

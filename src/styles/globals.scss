@@ -5,6 +5,15 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
+.container {
+    padding: auto, 20px, auto, 20px;
+}
+@media (min-width: 450) {
+    .container {
+        margin: auto;
+        max-width: 400;
+    }
+}
 @media (min-width: 640px) {
     .container {
         margin: auto;

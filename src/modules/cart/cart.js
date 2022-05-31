@@ -24,18 +24,18 @@ function Cart({ onClickOnCart, classNameOnCart }) {
     <div className="flex w-full">
       <div
         className={
-          "w-[75%] h-screen fixed top-0 left-0 -translate-x-full transition-all bg-slate-200 opacity-60 z-10 " +
+          "w-[75%] h-screen fixed top-0 left-0 -translate-x-full transition-all bg-slate-200 opacity-60 z-10 lg:block hidden " +
           classNameOnCart
         }
         onClick={onClickOnCart}
       />
       <div
         className={
-          "w-[25%] h-screen fixed top-0 right-0 translate-x-full transition-all bg-[#1d1f2e] z-10 " +
+          "lg:w-[25%] w-screen h-screen fixed top-0 right-0 translate-x-full transition-all bg-[#1d1f2e] z-10 " +
           classNameOnCart
         }
       >
-        <div className="flex items-center justify-between px-10 py-8">
+        <div className="flex items-center justify-between px-10 py-8 border-b-0 border-[#d2d2d51a]">
           <p className="text-xs leading-4 tracking-[2px] uppercase text-[#ffffffb3] font-medium">
             your cart
           </p>
@@ -46,32 +46,40 @@ function Cart({ onClickOnCart, classNameOnCart }) {
             <MdOutlineClose />
           </span>
         </div>
-        <div className="px-10 pt-8 border-t-0 border-[#d2d2d51a]">
-          {cart.map((value, key) => (
-            <div key={key}>
-              <CartItem
-                id={value.id}
-                image={value.image}
-                name={value.name}
-                price={value.price}
-                quantity={value.quantity}
-                deleteCart={() => handleDeleteCart(value.id, key)}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="px-10 py-8 border-t-0 border-[#d2d2d51a] fixed bottom-0 right-0 w-full z-20">
-          <div className="flex justify-between items-center">
-            <p className="text-[20px] leading-8 text-white">Total</p>
-
-            <span className="text-[20px] leading-8 text-white">
-              $ {carts.totalPrice}
-            </span>
+        {cart.length !== 0 ? (
+          <div className="px-10 pt-8">
+            {cart.map((value, key) => (
+              <div key={key}>
+                <CartItem
+                  id={value.id}
+                  image={value.image}
+                  name={value.name}
+                  price={value.price}
+                  quantity={value.quantity}
+                  deleteCart={() => handleDeleteCart(value.id, key)}
+                />
+              </div>
+            ))}
           </div>
-          <button className="bg-white text-xs uppercase py-5 px-6 w-full font-bold tracking-[2px] mt-5 hover:bg-green-600">
-            continue to checkout
-          </button>
-        </div>
+        ) : (
+          <p className="text-white text-center mt-32">No Item Cart</p>
+        )}
+        {cart.length !== 0 ? (
+          <div className="px-10 py-8 border-t-0 border-[#d2d2d51a] fixed bottom-0 right-0 w-full z-20">
+            <div className="flex justify-between items-center">
+              <p className="text-[20px] leading-8 text-white">Total</p>
+
+              <span className="text-[20px] leading-8 text-white">
+                $ {carts.totalPrice}
+              </span>
+            </div>
+            <button className="bg-white text-xs uppercase py-5 px-6 w-full font-bold tracking-[2px] mt-5 hover:bg-green-600">
+              continue to checkout
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
@@ -82,7 +90,6 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
   const dispatch = useDispatch();
 
   const onChangeQuantityCart = (e) => {
-    console.log(e.target.value);
     let filterCart = cart.filter((e) => e.id === id);
     let key = cart.indexOf(...filterCart);
     cart[key].quantity = cart[key].quantity + Number(quantity);

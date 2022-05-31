@@ -11,13 +11,13 @@ function Gift() {
         <span className="w-8 h-[1px] bg-[#ececed]"></span>
       </div>
       <p className="text-4xl my-8 text-white">Coffee Updates</p>
-      <div className="flex">
+      <div className="flex lg:flex-row flex-col">
         <input
-          className="w-[350px] py-5 px-6 bg-transparent border-0 border-[#2f303e] text-xs font-bold hover:border-[#ffffff80]"
+          className="w-[350px] py-5 px-6 bg-transparent border-0 border-[#2f303e] text-xs font-bold hover:border-[#ffffff80] mb-5 lg:mb-0"
           placeholder="nguyenduydai24@gmail.com"
           maxLength={256}
         />
-        <button className="bg-white text-xs text-blacks uppercase px-8 ml-5">
+        <button className="bg-white text-xs text-blacks uppercase px-8 py-4 lg:ml-5">
           Subscribe
         </button>
       </div>
