@@ -108,7 +108,12 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
   return (
     <div className="flex justify-between items-center mb-8">
       <div className="flex">
-        <img src={image} height={80} width={80} />
+        <img
+          className="max-w-[80px] max-h-[80px]"
+          src={image}
+          height={80}
+          width={80}
+        />
         <div className="flex flex-col items-start ml-10">
           <p className="text-white text-lg leading-8">{name}</p>
           <span className="text-white text-lg leading-8">${price}</span>
