@@ -6,7 +6,7 @@ function Introduce() {
   return (
     <div className="container py-24 flex flex-col lg:flex-row justify-center items-center">
       <Fade left>
-        <div className="lg:w-1/2 w-full h-full lg:mr-5">
+        <div className="lg:w-1/2 md:w-2/3 w-full h-full lg:mr-5">
           <video autoPlay loop muted className="h-full">
             <source src="./videoIntroduce.mp4" type="video/mp4" />
           </video>

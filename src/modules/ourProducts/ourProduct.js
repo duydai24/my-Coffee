@@ -122,13 +122,13 @@ function SliderItem({ image, title, lable, text, btn }) {
     <div className="flex lg:flex-row flex-col items-center">
       <div className="flex items-center justify-between lg:w-1/2 w-full">
         <img
-          className="w-full h-[380px] lg:mr-5"
+          className="w-full h-1/2 lg:mr-5"
           src={image}
           height={680}
           width={680}
         />
       </div>
-      <div className="flex flex-col lg:items-start text-center items-center lg:pl-16 lg:w-1/2 w-full">
+      <div className="flex flex-col lg:items-start lg:text-left text-center items-center lg:pl-16 lg:w-1/2 w-full">
         <p className="text-xs text-blacks mt-5 lg:mt-0 uppercase">{lable}</p>
         <p className="lg:text-4xl text-3xl text-black font-normal my-5">
           {title}
