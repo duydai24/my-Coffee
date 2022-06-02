@@ -2,6 +2,8 @@ import React from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCart, updateCart } from "../../redux/action/cartAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Cart({ onClickOnCart, classNameOnCart }) {
   const { cart } = useSelector((state) => state.carts);
@@ -18,6 +20,7 @@ function Cart({ onClickOnCart, classNameOnCart }) {
     });
 
     dispatch(deleteCart(cart, totalQuantity, totalPrice));
+    toast.success("👌 Product delete to cart successfully !");
   };
 
   return (
@@ -104,6 +107,7 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
     );
 
     dispatch(updateCart(cart, totalQuantity, totalPrice));
+    toast.success("👌 Product update quantity to cart successfully !");
   };
   return (
     <div className="flex justify-between items-center mb-8">
@@ -123,14 +127,16 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
           >
             REMOVE
           </button>
+          <ToastContainer />
         </div>
       </div>
       <input
-        className="w-14 h-10 pr-1 text-xs border-0 border-[#2f303e] hover:border-white bg-blacks text-white text-center font-bold"
+        className="w-14 h-10 px-3 text-xs border-0 border-[#2f303e] hover:border-white bg-blacks text-white text-center font-bold"
         required
         type="number"
         pattern="^[0-9]+$"
         name="quantity"
+        min={1}
         value={quantity}
         onChange={(e) => onChangeQuantityCart(e)}
       />

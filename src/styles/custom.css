@@ -1,0 +1,81 @@
+.bg-Banner {
+  background-position: 0px 0px, 50% 50%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(5, 8, 39, 0.4)), to(rgba(5, 8, 39, 0.4))), url(/bg-Banner.jpg);
+  background-image: linear-gradient(180deg, rgba(5, 8, 39, 0.4), rgba(5, 8, 39, 0.4)), url(/bg-Banner.jpg);
+}
+
+.btnIntroduce {
+  border-bottom: 2px solid rgba(162, 95, 75, 0.2);
+  -webkit-transition: color 400ms ease, border-color 400ms ease;
+  transition: color 400ms ease, border-color 400ms ease;
+}
+
+.imgProduct:hover .btnProducts {
+  opacity: 1;
+  bottom: 20px;
+  visibility: visible !important;
+}
+
+.mtStory {
+  margin-top: -100px !important;
+}
+
+.textHeader:hover {
+  opacity: 1 !important;
+}
+
+.textHeader:hover .lineHeader {
+  visibility: visible;
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: unset;
+          animation-iteration-count: unset;
+}
+
+@-webkit-keyframes example {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes example {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.hoverCart:hover .hoverCartItem {
+  opacity: 1;
+}
+
+.onCart {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.offMenu {
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 400ms;
+          transition-duration: 400ms;
+  -webkit-transition-timing-function: ease-out !important;
+          transition-timing-function: ease-out !important;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.onMenu {
+  -webkit-transform: translateX(0) translateY(0);
+          transform: translateX(0) translateY(0);
+}
+/*# sourceMappingURL=custom.css.map */

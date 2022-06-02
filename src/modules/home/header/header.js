@@ -34,7 +34,7 @@ function Header({ onClickOnCart }) {
         <button className="text-blacks uppercase tracking-[3px] text-center font-bold text-xs mx-2 opacity-60 hover:opacity-100 hoverCartItem">
           Cart
         </button>
-        <span className="bg-[#1d1f2e] opacity-60 text-center px-[5px] text-xs text-white cursor-pointer rounded-full hover:opacity-100 hoverCartItem">
+        <span className="bg-[#1d1f2e] opacity-60 text-center w-4 h-4 text-xs text-white cursor-pointer rounded-full hover:opacity-100 hoverCartItem">
           {carts.totalQuantity}
         </span>
       </div>

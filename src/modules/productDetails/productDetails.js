@@ -6,6 +6,8 @@ import Title from "../../lib/title";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { addCart } from "../../redux/action/cartAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProductDetails() {
   const dispatch = useDispatch();
@@ -60,7 +62,7 @@ function ProductDetails() {
       );
       dispatch(addCart(cart, totalQuantity, totalPrice));
     }
-    alert("Thêm vào giỏ hàng thành công");
+    toast.success("👌 Product added to cart successfully !");
   };
 
   return (
@@ -87,7 +89,7 @@ function ProductDetails() {
             <label className="text-xs leading-5 font-bold text-[#1d1f2e99] uppercase my-2">
               quantity
             </label>
-            <div className="flex lg:flex-row md:flex-row flex-col md:w-auto w-full justify-center">
+            <div className="flex lg:flex-row md:flex-row flex-col md:w-auto w-full lg:justify-start justify-center">
               <input
                 pattern="[0-9]*"
                 className="border-0 border-blacks py-3 pl-5 pr-2 lg:w-1/4 md:w-1/4 w-full outline-none lg:mb-0 md:mb-0 mb-3 text-center"
@@ -110,6 +112,7 @@ function ProductDetails() {
               >
                 add to cart
               </button>
+              <ToastContainer />
             </div>
           </div>
           <div className="lg:text-left text-center">

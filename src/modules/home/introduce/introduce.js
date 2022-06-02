@@ -1,6 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Fade from "react-reveal/Fade";
+import config from "react-reveal/globals";
+
+config({ ssrFadeout: true });
 
 function Introduce() {
   return (

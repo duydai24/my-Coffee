@@ -21,10 +21,10 @@ function MyApp({ Component, pageProps }) {
   } else {
     return (
       <Provider store={store}>
+        <Helmet>
+          <title>My Coffee</title>
+        </Helmet>
         <Layout>
-          <Helmet>
-            <title>My Coffee</title>
-          </Helmet>
           <Component {...pageProps} />
         </Layout>
       </Provider>
