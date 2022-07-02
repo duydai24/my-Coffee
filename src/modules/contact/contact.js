@@ -2,11 +2,10 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import Title from "../../lib/title";
 import Fade from "react-reveal/Fade";
-import GoogleMap from "react-google-maps";
 
 function Contact() {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <Helmet>
         <title>My Coffee - Contact</title>
       </Helmet>
@@ -14,7 +13,7 @@ function Contact() {
         <Fade bottom>
           <div className="relative">
             <div className="container bg-cover flex flex-col items-center text-center text-white relative">
-              <p className="text-4xl text-blacks mb-8">Let's Connect</p>
+              <p className="text-4xl text-blacks mb-8">Lets Connect</p>
               <p className="opacity-80 text-blacks max-w-xl leading-9">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse varius enim in eros elementum tristique. Duis
@@ -127,7 +126,7 @@ function Directory({ name, title, phone, email }) {
 function Offices({ image, address }) {
   return (
     <div className="flex flex-col items-center text-center">
-      <img className="pb-10" src={image} height={190} width={460} />
+      <img className="pb-10" src={image} height={190} width={460} alt="img" />
       <p className="uppercase text-xs text-blacks opacity-60 font-bold">
         UNITED KINGDOM
       </p>
@@ -152,7 +151,7 @@ function FormContact({}) {
         <div className="lg:w-3/5 w-full lg:mr-14 mb-14">
           <p className="font-bold text-xs opacity-60 uppercase">CONTACT FORM</p>
           <p className="text-lg opacity-90">
-            Drop us your message and I'll get back to you as soon as possible.
+            Drop us your message and Ill get back to you as soon as possible.
           </p>
           <div className="mt-10">
             <p className="font-bold text-xs opacity-50 uppercase">NAME</p>

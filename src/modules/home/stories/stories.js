@@ -6,7 +6,7 @@ import Fade from "react-reveal/Fade";
 function Stories() {
   return (
     <Fade bottom>
-      <div className="container py-24 px-5">
+      <div className="container py-24 lg:px-5 px-3">
         <Title text={"BEHIND THE MUGS, LIFESTYLE STORIES"} />
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           <Story
@@ -59,8 +59,14 @@ function Story({ image, text, title, date }) {
   return (
     <div className="py-10">
       <div className="relative w-full imgProduct">
-        <img className="h-[300px]" src={image} width={460} height={460} />
-        <Link href="/About">
+        <img
+          className="h-[300px]"
+          src={image}
+          width={460}
+          height={460}
+          alt="img"
+        />
+        <Link href="/About" passHref>
           <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
             read the full story
           </button>

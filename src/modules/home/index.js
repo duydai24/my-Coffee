@@ -9,7 +9,7 @@ import Stories from "./stories/stories";
 
 function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Banner />
       <Introduce />
       <Featured />

@@ -5,7 +5,7 @@ import Fade from "react-reveal/Fade";
 
 function Event() {
   return (
-    <div className="container pb-24 px-5">
+    <div className="container pb-24 lg:px-5 px-3">
       <Fade bottom>
         <Title text={"BUY 2 MUGS AND GET A COFFEE MAGAZINE FREE"} />
         <div className="flex lg:flex-row flex-col">
@@ -15,6 +15,7 @@ function Event() {
               src="event1.jpg"
               height={280}
               width={280}
+              alt="img-event"
             />
             <div className="lg:w-2/5 md:w-2/5 w-full flex lg:block md:block">
               <img
@@ -22,12 +23,14 @@ function Event() {
                 src="event2.jpg"
                 height={130}
                 width={160}
+                alt="img-event"
               />
               <img
                 className="w-1/2 lg:w-full md:w-full"
                 src="event3.jpg"
                 height={130}
                 width={160}
+                alt="img-event"
               />
             </div>
           </div>
@@ -42,7 +45,7 @@ function Event() {
               The most versatile furniture system ever created. Designed to fit
               your life.
             </p>
-            <Link href="/OurProducts">
+            <Link href="/OurProducts" passHref>
               <button className="bg-blacks py-4 px-8 text-xs text-white uppercase">
                 start shopping
               </button>

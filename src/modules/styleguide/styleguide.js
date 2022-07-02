@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 function Styleguide() {
   return (
-    <div>
+    <div className="overflow-hiddene">
       <Helmet>
         <title>My Coffee - Styleguide</title>
       </Helmet>

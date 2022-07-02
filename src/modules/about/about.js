@@ -5,7 +5,7 @@ import Fade from "react-reveal/Fade";
 
 function About() {
   return (
-    <div className="lg:px-0 px-5">
+    <div className="lg:px-0 px-5 overflow-hidden">
       <Helmet>
         <title>My Coffee - About</title>
       </Helmet>
@@ -107,6 +107,7 @@ function IntroductionItem({ image }) {
         src={image}
         width={460}
         height={380}
+        alt="img"
       />
       <div className="lg:w-1/2 w-full lg:ml-10 text-center lg:text-left">
         <p className="text-2xl font-normal leading-10 my-4 opacity-80">
@@ -145,6 +146,7 @@ function IntroductionItem2({ image }) {
         src={image}
         width={460}
         height={380}
+        alt="img"
       />
     </div>
   );
@@ -152,7 +154,7 @@ function IntroductionItem2({ image }) {
 function AuthorsItem({ image, name, text }) {
   return (
     <div className="lg:pb-24 md:w-2/5 lg:w-auto w-auto pb-5 md:px-[2%]">
-      <img className="w-full" src={image} width={300} height={380} />
+      <img className="w-full" src={image} width={300} height={380} alt="img" />
       <p className="text-xl font-normal leading-10 my-2 opacity-80 text-center">
         {name}
       </p>

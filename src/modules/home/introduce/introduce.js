@@ -7,16 +7,16 @@ config({ ssrFadeout: true });
 
 function Introduce() {
   return (
-    <div className="container py-24 flex flex-col lg:flex-row justify-center items-center">
+    <div className="container lg:py-24 py-14 flex flex-col lg:flex-row justify-center items-center">
       <Fade left>
-        <div className="lg:w-1/2 md:w-2/3 w-full h-full lg:mr-5">
-          <video autoPlay loop muted className="h-full">
+        <div className="lg:w-1/2 md:w-full w-full h-full lg:mr-5 px-3 hidden md:block lg:block">
+          <video autoPlay loop muted className="lg:h-full h-auto">
             <source src="./videoIntroduce.mp4" type="video/mp4" />
           </video>
         </div>
       </Fade>
       <Fade right>
-        <div className="lg:w-1/2 w-full px-5 text-center">
+        <div className="lg:w-1/2 w-full mt-10 lg:mt-0 lg:px-5 px-3 text-center">
           <p className="font-normal text-[26px] opacity-70">
             What is your most special coffee?
           </p>
@@ -27,11 +27,18 @@ function Introduce() {
             however a small line of blind text by the name of Lorem Ipsum
             decided to leave for the far World of Grammar.
           </p>
-          <Link href="/About">
+          <Link href="/About" passHref>
             <button className="text-[#a25f4b] text-sm hover:border-b-[#a25f4b] btnIntroduce">
               Read the full Story
             </button>
           </Link>
+        </div>
+      </Fade>
+      <Fade left>
+        <div className="lg:w-1/2 md:w-full w-full h-full lg:mr-5 mt-10 px-3 block md:hidden lg:hidden">
+          <video autoPlay loop muted playsInline className="lg:h-full h-auto">
+            <source src="./videoIntroduce.mp4" type="video/mp4" />
+          </video>
         </div>
       </Fade>
     </div>

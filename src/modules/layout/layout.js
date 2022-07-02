@@ -5,6 +5,7 @@ import Gift from "../home/gift/gift";
 import Header from "../home/header/header";
 import Fade from "react-reveal/Fade";
 import HeaderMobile from "../home/headerMobile";
+import { ToastContainer } from "react-toastify";
 
 function Layout({ children }) {
   const [onCart, setOnCart] = useState(false);
@@ -29,6 +30,7 @@ function Layout({ children }) {
         onClickOnCart={() => setOnCart(!onCart)}
         classNameOnCart={_onCart}
       />
+      <ToastContainer />
       <main>{children}</main>
       <Fade bottom>
         <Gift />

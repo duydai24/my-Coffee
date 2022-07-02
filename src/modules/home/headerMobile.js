@@ -14,12 +14,13 @@ function HeaderMobile({ onClickOnCart }) {
   return (
     <div className="container h-auto relative top-0 left-0">
       <div className="bg-white flex fixed top-0 left-0 justify-between items-center w-screen p-6 z-20">
-        <Link href="/">
+        <Link href="/" passHref>
           <img
             src="/logo.png"
             width={112}
             height={50}
             className="max-w-[200px] cursor-pointer"
+            alt="ig"
           />
         </Link>
         <div className="flex">
@@ -65,7 +66,7 @@ function HeaderItem({ text, link }) {
     // opacity
   };
   return (
-    <Link href={link}>
+    <Link href={link} passHref>
       <p
         style={style}
         className="text-blacks tracking-[3px] uppercase text-center pb-5 font-bold text-xs cursor-pointer opacity-60 textHeader"

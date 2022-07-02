@@ -15,7 +15,7 @@ function Banner() {
             The most versatile furniture system ever created. Designed to fit
             your life, made to move and grow.
           </p>
-          <Link href="/OurProducts">
+          <Link href="/OurProducts" passHref>
             <button className="bg-white px-8 py-4 uppercase text-black text-xs mt-8">
               Explore Our Products
             </button>

@@ -1,26 +1,33 @@
 import React from "react";
 import { MdOutlineClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteCart, updateCart } from "../../redux/action/cartAction";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { deleteCart, handleCart } from "../../redux/action/cartAction";
+import { toast } from "react-toastify";
+import { createSelector } from "reselect";
+import { connect } from "react-redux";
+import { productSelector } from "../../redux/selector/productsSelector";
+import { cartSelector, cartsSelector } from "../../redux/selector/cartSelector";
 
-function Cart({ onClickOnCart, classNameOnCart }) {
-  const { cart } = useSelector((state) => state.carts);
-  const { carts } = useSelector((state) => state);
-  const dispatch = useDispatch();
+const componentSelector = () =>
+  createSelector(
+    [productSelector, cartSelector, cartsSelector],
+    ({ product }, { cart }, { carts }) => {
+      return {
+        product,
+        cart,
+        carts,
+      };
+    }
+  );
 
-  const handleDeleteCart = (id, key) => {
-    cart.splice(key, 1);
-    let totalQuantity = 0;
-    let totalPrice = 0;
-    cart.map((value) => {
-      totalQuantity += value.quantity;
-      totalPrice += value.price * value.quantity;
-    });
-
-    dispatch(deleteCart(cart, totalQuantity, totalPrice));
+function Cart({ onClickOnCart, classNameOnCart, dispatch, cart, carts }) {
+  const handleDeleteCart = (id) => {
+    dispatch(deleteCart(id));
     toast.success("👌 Product delete to cart successfully !");
+  };
+  const onChangeQuantityCart = (e, id) => {
+    let quantityNumber = e.target.value;
+    dispatch(handleCart(id, quantityNumber));
+    toast.success("👌 Product update quantity to cart successfully !");
   };
 
   return (
@@ -60,6 +67,11 @@ function Cart({ onClickOnCart, classNameOnCart }) {
                   price={value.price}
                   quantity={value.quantity}
                   deleteCart={() => handleDeleteCart(value.id, key)}
+                  dispatch={dispatch}
+                  cart={cart}
+                  onChangeQuantityCart={(e) =>
+                    onChangeQuantityCart(e, value.id)
+                  }
                 />
               </div>
             ))}
@@ -88,27 +100,14 @@ function Cart({ onClickOnCart, classNameOnCart }) {
   );
 }
 
-function CartItem({ deleteCart, image, name, price, quantity, id }) {
-  const { cart } = useSelector((state) => state.carts);
-  const dispatch = useDispatch();
-
-  const onChangeQuantityCart = (e) => {
-    let filterCart = cart.filter((e) => e.id === id);
-    let key = cart.indexOf(...filterCart);
-    cart[key].quantity = cart[key].quantity + Number(quantity);
-    cart[key].quantity = Number(e.target.value);
-    let totalQuantity = 0;
-    let totalPrice = 0;
-    cart.map(
-      (value) => (
-        (totalQuantity += value.quantity),
-        (totalPrice += value.quantity * value.price)
-      )
-    );
-
-    dispatch(updateCart(cart, totalQuantity, totalPrice));
-    toast.success("👌 Product update quantity to cart successfully !");
-  };
+function CartItem({
+  deleteCart,
+  image,
+  name,
+  price,
+  quantity,
+  onChangeQuantityCart,
+}) {
   return (
     <div className="flex justify-between items-center mb-8">
       <div className="flex">
@@ -117,6 +116,7 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
           src={image}
           height={80}
           width={80}
+          alt="img"
         />
         <div className="flex flex-col items-start ml-10">
           <p className="text-white text-lg leading-8">{name}</p>
@@ -127,7 +127,6 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
           >
             REMOVE
           </button>
-          <ToastContainer />
         </div>
       </div>
       <input
@@ -137,10 +136,10 @@ function CartItem({ deleteCart, image, name, price, quantity, id }) {
         pattern="^[0-9]+$"
         name="quantity"
         min={1}
-        value={quantity}
-        onChange={(e) => onChangeQuantityCart(e)}
+        value={Number(quantity)}
+        onChange={onChangeQuantityCart}
       />
     </div>
   );
 }
-export default Cart;
+export default connect(componentSelector)(Cart);

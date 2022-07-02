@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
@@ -6,7 +7,7 @@ import { Helmet } from "react-helmet";
 function Blog() {
   const { story } = useSelector((state) => state.storys);
   return (
-    <div className="relative py-24">
+    <div className="relative py-24 overflow-hidden">
       <Helmet>
         <title>My Coffee - Blog</title>
       </Helmet>
@@ -77,12 +78,13 @@ function Blog() {
                   src="/logo.png"
                   height={24}
                   width={112}
+                  alt="img"
                 />
                 <p className="opacity-60 text-blacks text-sm py-5 leading-7">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse varius enim in eros elementum tristique.
                 </p>
-                <Link href="/About">
+                <Link href="/About" passHref>
                   <button className="text-[#a25f4b] text-sm hover:border-b-[#a25f4b] btnIntroduce">
                     Read the full Story
                   </button>
@@ -138,8 +140,9 @@ function Story({ image, text, title, date }) {
           src={image}
           width={460}
           height={460}
+          alt="img"
         />
-        <Link href="/About">
+        <Link href="/About" passHref>
           <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
             read the full story
           </button>
@@ -158,8 +161,14 @@ function LatestPostItem({ image, title, content, date }) {
   return (
     <div className="flex lg:flex-row md:flex-row flex-col justify-center pb-10 lg:h-[210px] h-auto">
       <div className="lg:w-2/5 md:w-2/5 w-full mr-10 relative imgProduct">
-        <img className="w-full h-full" src={image} width={260} height={210} />
-        <Link href="/About">
+        <img
+          className="w-full h-full"
+          src={image}
+          width={260}
+          height={210}
+          alt="img"
+        />
+        <Link href="/About" passHref>
           <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
             read the full story
           </button>
@@ -192,7 +201,13 @@ function AuthorItem({ text, img }) {
   return (
     <div className="bg-transparent hover:bg-[#a25f4b0a] transition-all cursor-pointer border-l-2 border-[#a25f4b33] hover:border-[#a25f4bcc] mb-2">
       <div className="py-2 pl-5 flex lg:items-center items-start">
-        <img src={img} height={60} width={60} className="max-h-[60px]" />
+        <img
+          src={img}
+          height={60}
+          width={60}
+          className="max-h-[60px]"
+          alt="img"
+        />
         <p className="text-blacks ml-5">{text}</p>
       </div>
     </div>

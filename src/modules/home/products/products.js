@@ -15,17 +15,17 @@ function Products() {
           <Fade key={key} bottom>
             <div className="px-3 py-10">
               <div className="relative w-full imgProduct">
-                <Link href={"/ProductDetails/" + value.id}>
-                  <img src={value.image} width={460} height={460} />
+                <Link href={"/ProductDetails/" + value.id} passHref>
+                  <img src={value.image} width={460} height={460} alt="img" />
                 </Link>
-                <Link href={"/ProductDetails/" + value.id}>
+                <Link href={"/ProductDetails/" + value.id} passHref>
                   <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
                     Explore MUGS
                   </button>
                 </Link>
               </div>
               <div className="text-center pt-10">
-                <Link href={"/ProductDetails/" + value.id}>
+                <Link href={"/ProductDetails/" + value.id} passHref>
                   <p className="text-blacks text-lg">{value.name}</p>
                 </Link>
                 <p className="text-blacks opacity-60 text-sm">

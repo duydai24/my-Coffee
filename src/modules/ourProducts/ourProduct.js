@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import Link from "next/link";
 import { Helmet } from "react-helmet";
 import Fade from "react-reveal/Fade";
+import { createSelector } from "reselect";
+import { connect } from "react-redux";
+import { productSelector } from "../../redux/selector/productsSelector";
+import { categorySelector } from "../../redux/selector/categorySelector";
 
-function OurProducts() {
-  let { product } = useSelector((state) => state.products);
-  const { categoryId } = useSelector((state) => state.category);
+const componentSelector = () =>
+  createSelector(
+    [productSelector, categorySelector],
+    ({ product }, { categoryId }) => {
+      return {
+        product,
+        categoryId,
+      };
+    }
+  );
 
+function OurProducts({ product, categoryId }) {
   const [active, setActive] = useState(0);
   const [filterId, setFilterId] = useState(0);
   const handleCategory = (id) => {
@@ -27,9 +38,8 @@ function OurProducts() {
     slidesToScroll: 1,
     arrows: false,
   };
-
   return (
-    <div className="container pt-24 px-5 lg:px-0">
+    <div className="container pt-24 px-3 lg:px-0 overflow-hidden">
       <Fade bottom>
         <Helmet>
           <title>My Coffee - OurProducts</title>
@@ -41,7 +51,7 @@ function OurProducts() {
           </p>
           <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center lg:w-[80%] w-full mx-auto mt-10">
             <span className="w-8 h-[2px] bg-[#ececed] hidden lg:block"></span>
-            {categoryId.map((value, key) => (
+            {categoryId?.map((value, key) => (
               <button
                 key={key}
                 onClick={() => handleCategory(value.id, key)}
@@ -81,38 +91,39 @@ function OurProducts() {
             />
           </Slider>
         </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-          <Fade bottom>
-            {product.map((value, key) => (
-              <div key={key} className="px-3 py-10">
-                <div className="relative w-full imgProduct">
-                  <Link href={"/ProductDetails/" + value.id}>
-                    <img
-                      className=""
-                      src={value.image}
-                      width={460}
-                      height={460}
-                    />
-                  </Link>
-                  <Link href={"/ProductDetails/" + value.id}>
-                    <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
-                      Explore MUGS
-                    </button>
-                  </Link>
-                </div>
-                <div className="text-center pt-10">
-                  <Link href={"/ProductDetails/" + value.id}>
-                    <p className="text-blacks text-lg">{value.name}</p>
-                  </Link>
-                  <p className="text-blacks opacity-60 text-sm">
-                    $ {value.price} USD
-                  </p>
-                </div>
-              </div>
-            ))}
-          </Fade>
-        </div>
       </Fade>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+        <Fade bottom>
+          {product.map((value, key) => (
+            <div key={key} className="lg:px-3 px-0 py-10">
+              <div className="relative w-full imgProduct">
+                <Link href={"/ProductDetails/" + value.id} passHref>
+                  <img
+                    className=""
+                    src={value.image}
+                    width={460}
+                    height={460}
+                    alt=""
+                  />
+                </Link>
+                <Link href={"/ProductDetails/" + value.id} passHref>
+                  <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
+                    Explore MUGS
+                  </button>
+                </Link>
+              </div>
+              <div className="text-center pt-10">
+                <Link href={"/ProductDetails/" + value.id} passHref>
+                  <p className="text-blacks text-lg">{value.name}</p>
+                </Link>
+                <p className="text-blacks opacity-60 text-sm">
+                  $ {value.price} USD
+                </p>
+              </div>
+            </div>
+          ))}
+        </Fade>
+      </div>
     </div>
   );
 }
@@ -126,6 +137,7 @@ function SliderItem({ image, title, lable, text, btn }) {
           src={image}
           height={680}
           width={680}
+          alt=""
         />
       </div>
       <div className="flex flex-col lg:items-start lg:text-left text-center items-center lg:pl-16 lg:w-1/2 w-full">
@@ -141,4 +153,4 @@ function SliderItem({ image, title, lable, text, btn }) {
     </div>
   );
 }
-export default OurProducts;
+export default connect(componentSelector)(OurProducts);

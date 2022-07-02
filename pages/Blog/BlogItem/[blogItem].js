@@ -1,0 +1,2 @@
+import BlogItem from "../../../src/modules/blog/BlogItem/blogItem";
+export default BlogItem;

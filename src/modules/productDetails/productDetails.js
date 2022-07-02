@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { IoDiamondOutline } from "react-icons/io5";
 import { MdLightbulbOutline } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import Title from "../../lib/title";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { addCart } from "../../redux/action/cartAction";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { addCart, updateCart } from "../../redux/action/cartAction";
+import { toast } from "react-toastify";
+import { createSelector } from "reselect";
+import { connect } from "react-redux";
+import { productSelector } from "../../redux/selector/productsSelector";
+import { cartSelector } from "../../redux/selector/cartSelector";
 
-function ProductDetails() {
-  const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.products);
-  const { cart } = useSelector((state) => state.carts);
-  const { carts } = useSelector((state) => state);
+const componentSelector = () =>
+  createSelector([productSelector, cartSelector], ({ product }, { cart }) => {
+    return {
+      product,
+      cart,
+    };
+  });
 
+function ProductDetails({ dispatch, product, cart }) {
   const router = useRouter();
   const { productDetails } = router.query;
   let new_product = product.filter((e) => e.id == productDetails);
@@ -23,9 +28,9 @@ function ProductDetails() {
   new_product.map((value) => (categoryId = value.categoryId));
   let category_product = product.filter((e) => e.categoryId == categoryId);
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantityNumber, setQuantityNumber] = useState(1);
   const onChangeQuantiTy = (e) => {
-    setQuantity(e.target.value);
+    setQuantityNumber(e.target.value);
   };
 
   const addToCart = (id, name, image, price) => {
@@ -36,47 +41,30 @@ function ProductDetails() {
         name: name,
         image: image,
         price: price,
-        quantity: Number(quantity),
+        quantity: Number(quantityNumber),
       };
-      cart = [...cart, new_cart];
-      let totalQuantity = 0;
-      let totalPrice = 0;
-      cart.map(
-        (value) => (
-          (totalQuantity += value.quantity),
-          (totalPrice += value.quantity * value.price)
-        )
-      );
-      dispatch(addCart(cart, totalQuantity, totalPrice));
+      dispatch(addCart(new_cart));
     } else {
-      let filterCart = cart.filter((e) => e.id === id);
-      let totalQuantity = 0;
-      let totalPrice = 0;
-      let key = cart.indexOf(...filterCart);
-      cart[key].quantity = cart[key].quantity + Number(quantity);
-      cart.map(
-        (value) => (
-          (totalQuantity += value.quantity),
-          (totalPrice += value.quantity * value.price)
-        )
-      );
-      dispatch(addCart(cart, totalQuantity, totalPrice));
+      setQuantityNumber(quantityNumber);
+      console.log(quantityNumber);
+      dispatch(updateCart(id, quantityNumber));
     }
     toast.success("👌 Product added to cart successfully !");
   };
 
   return (
-    <div className="py-24 lg:py-0">
+    <div className="py-24 lg:py-0 overflow-hidden">
       {new_product.map((value, key) => (
         <div
           key={key}
-          className="container grid lg:grid-cols-2 grid-cols-1 gap-16 py-24 px-5 lg:px-0"
+          className="container grid lg:grid-cols-2 grid-cols-1 gap-16 lg:py-24 py-8 px-5 lg:px-0"
         >
           <img
             className="w-full max-h-[460px]"
             src={value.image}
             height={460}
             width={460}
+            alt="img"
           />
           <div className="lg:items-start flex flex-col items-center justify-center text-center lg:text-left">
             <p className="text-4xl">{value.name}</p>
@@ -95,7 +83,7 @@ function ProductDetails() {
                 className="border-0 border-blacks py-3 pl-5 pr-2 lg:w-1/4 md:w-1/4 w-full outline-none lg:mb-0 md:mb-0 mb-3 text-center"
                 type="number"
                 min={1}
-                value={Number(quantity)}
+                value={Number(quantityNumber)}
                 onChange={(e) => onChangeQuantiTy(e)}
               />
               <button
@@ -112,7 +100,6 @@ function ProductDetails() {
               >
                 add to cart
               </button>
-              <ToastContainer />
             </div>
           </div>
           <div className="lg:text-left text-center">
@@ -193,22 +180,23 @@ function ProductDetails() {
         {category_product.map((value, key) => (
           <div key={key} className="px-3 py-10">
             <div className="relative w-full imgProduct">
-              <Link href={"/ProductDetails/" + value.id}>
+              <Link href={"/ProductDetails/" + value.id} passHref>
                 <img
                   className="w-full"
                   src={value.image}
                   width={460}
                   height={460}
+                  alt={""}
                 />
               </Link>
-              <Link href={"/ProductDetails/" + value.id}>
+              <Link href={"/ProductDetails/" + value.id} passHref>
                 <button className="bg-white uppercase text-blacks text-xs absolute left-1/2 -translate-x-1/2 bottom-2 invisible w-11/12 py-3 transition-all duration-200 opacity-0 btnProducts">
                   Explore MUGS
                 </button>
               </Link>
             </div>
             <div className="text-center pt-10">
-              <Link href={"/ProductDetails/" + value.id}>
+              <Link href={"/ProductDetails/" + value.id} passHref>
                 <p className="text-blacks text-lg">{value.name}</p>
               </Link>
               <p className="text-blacks opacity-60 text-sm">
@@ -221,4 +209,4 @@ function ProductDetails() {
     </div>
   );
 }
-export default ProductDetails;
+export default connect(componentSelector)(ProductDetails);

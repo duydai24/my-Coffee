@@ -4,7 +4,7 @@ import Fade from "react-reveal/Fade";
 
 function Featured() {
   return (
-    <div className="container lg:px-0 px-5 mx-0">
+    <div className="container lg:px-0 px-3 mx-0">
       <Fade bottom>
         <Title text={"FEATURED MUGS"} />
         <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 items-center justify-center gap-4">
@@ -33,6 +33,7 @@ function FeaturedItem({ image, name, price }) {
           src={image}
           width={460}
           height={540}
+          alt="img-featured"
         />
         <button className="bg-white uppercase text-blacks text-xs absolute transition-all left-1/2 -translate-x-1/2 bottom-3 w-11/12 py-4 opacity-0 duration-200 invisible btnProducts">
           Explore MUGS

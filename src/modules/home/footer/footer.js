@@ -6,7 +6,13 @@ function Footer() {
     <Fade bottom>
       <div className="lg:block hidden">
         <div className="container grid lg:grid-cols-4 grid-cols-1 grid-rows-none py-24 lg:gap-4 justify-center">
-          <img className="max-h-5" src="/logo.png" height={100} width={100} />
+          <img
+            className="max-h-5"
+            src="/logo.png"
+            height={100}
+            width={100}
+            alt="img"
+          />
           <p className="uppercase max-h-5 opacity-60 text-[#1d1f2eb3] text-xs font-bold">
             Menu
           </p>
@@ -74,6 +80,7 @@ function Footer() {
               src="/logo.png"
               height={100}
               width={100}
+              alt="img"
             />
             <div className="text-center pt-5">
               <p className="opacity-60 text-[#1d1f2eb3] text-xs mb-5">

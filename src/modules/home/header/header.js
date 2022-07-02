@@ -3,13 +3,23 @@ import Link from "next/link";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { connect } from "react-redux";
+import { cartsSelector } from "../../../redux/selector/cartSelector";
 
-function Header({ onClickOnCart }) {
-  const { carts } = useSelector((state) => state);
+const componentSelector = () =>
+  createSelector([cartsSelector], ({ carts }) => {
+    return {
+      carts,
+    };
+  });
+
+function Header({ onClickOnCart, carts }) {
   return (
     <div className="container flex justify-between items-center py-8">
-      <Link href="/">
+      <Link href="/" passHref>
         <img
+          alt="img"
           src="/logo.png"
           width={112}
           height={50}
@@ -49,14 +59,16 @@ function HeaderItem({ text, link }) {
   };
   return (
     <Link href={link}>
-      <p
-        style={style}
-        className="text-blacks tracking-[3px] uppercase text-center font-bold text-xs ml-10 cursor-pointer relative opacity-60 textHeader"
-      >
-        {text}
-        <span className="w-full h-[2px] absolute left-0 -bottom-2 bg-[#a25f4b] transition-all invisible lineHeader"></span>
-      </p>
+      <a>
+        <p
+          style={style}
+          className="text-blacks tracking-[3px] uppercase text-center font-bold text-xs ml-10 cursor-pointer relative opacity-60 textHeader"
+        >
+          {text}
+          <span className="w-full h-[2px] absolute left-0 -bottom-2 bg-[#a25f4b] transition-all invisible lineHeader"></span>
+        </p>
+      </a>
     </Link>
   );
 }
-export default Header;
+export default connect(componentSelector)(Header);
